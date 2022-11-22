@@ -85,13 +85,14 @@ const ClientTest = () => {
                         } else {
                             var tmp = JSON.parse(msg.body);
                             if (tmp.type == "answer") {
-                                flag=0;
+                                flag=1;
                                 pc.setRemoteDescription(tmp.data);
                                 console.log("answer!!");
                             } else if (tmp.type == "ice") {
                                 if (tmp.data) {
                                     if(flag){
                                         pc.addIceCandidate(tmp.data);
+                                        console.log("ICE State: " + pc.iceConnectionState);
                                     }
                                 }
                             }

@@ -77,6 +77,7 @@ const CounselorTest = () => {
                         if (tmp.data) {
                             if(flag){
                                 pc.addIceCandidate(tmp.data);
+                                console.log("ICE State: " + pc.iceConnectionState);
                             }
                         }
                     }
