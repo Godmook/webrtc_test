@@ -2,12 +2,16 @@ import React, {useEffect, useState, Component, useRef} from "react";
 import axios from "axios";
 import SockJS from "sockjs-client";
 import Stomp from "webstomp-client";
+import { LocalConvenienceStoreOutlined } from "@mui/icons-material";
 
 var stun_config = {
     'iceServers': [
         {
             "urls": "stun:stun.l.google.com:19302"
-        }
+        },
+        {
+            "urls": "stun1:stun.l.google.com:19302"
+        },
     ]
 
 }
@@ -18,13 +22,10 @@ var mediaConstraints = {
 };
 var arr = [];
 
-var MyStream;
 const ClientTest = () => {
     var flag = 0;
     let audio = new MediaStream();
     let remoteVideo = new MediaStream();
-    let remoteStream = new MediaStream();
-    const WebRTCSocket = () => {}
     useEffect(() => {
         remoteVideo = document.getElementById('userAudio');
         //audio=document.getElementById('myAudio');
@@ -37,7 +38,6 @@ const ClientTest = () => {
                     {configuration: mediaConstraints, stun_config}
                 );
                 function handlerIceCandidate(e) {
-
                     if (e.candidate) {
                         stomp.send(
                             "/pub/data",
@@ -50,7 +50,6 @@ const ClientTest = () => {
                         .mediaDevices
                         .getUserMedia({audio: true, video: false})
                         .then(stream => {
-                            audio.srcObject = stream;
                             stream
                                 .getTracks()
                                 .forEach(track => pc.addTrack(track, stream));
@@ -74,7 +73,7 @@ const ClientTest = () => {
                             var tmp2 = (msg.body).substring(0, (msg.body).length - 4);
                             if (tmp2 != "userName") {
                                 pc
-                                    .createOffer()
+                                    .createOffer({mandatory: { OfferToReceiveAudio: true, OfferToReceiveVideo: false }})
                                     .then((offer) => pc.setLocalDescription(offer))
                                     .then(() => {
                                         stomp.send(
@@ -86,28 +85,13 @@ const ClientTest = () => {
                         } else {
                             var tmp = JSON.parse(msg.body);
                             if (tmp.type == "answer") {
-                                flag = 1;
-                                pc
-                                    .setRemoteDescription(tmp.data)
-                                    .then(() => {
-                                        while (arr.length > 0) {
-                                            var ss = arr.pop();
-                                            pc.addIceCandidate(ss);
-                                            stomp.send(
-                                                "/pub/data",
-                                                JSON.stringify({type: 'ice', sender: "userName", channelId: response.data, data: ss})
-                                            );
-                                            console.log("ICE STATE: " + pc.iceConnectionState)
-                                        }
-
-                                    })
+                                flag=0;
+                                pc.setRemoteDescription(tmp.data);
+                                console.log("answer!!");
                             } else if (tmp.type == "ice") {
                                 if (tmp.data) {
-                                    if (!flag) {
-                                        arr.push(tmp.data);
-                                    } else {
+                                    if(flag){
                                         pc.addIceCandidate(tmp.data);
-                                        console.log("ICE ICE STATE: " + pc.iceConnectionState)
                                     }
                                 }
                             }
