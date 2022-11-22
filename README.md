@@ -1,7 +1,7 @@
 # React Test
 
 이 프로젝트는 WebRTC의 양방향 통신을 구현하기 위한 테스트 파일입니다.\
-해당 프로젝트의 결과물은 서로 음성만 돌리게 구현하였스빈다.
+해당 프로젝트의 결과물은 서로 음성만 돌리게 구현하였습니다.
 
 # Getting Started with Create React App
 
