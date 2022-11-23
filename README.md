@@ -3,6 +3,16 @@
 이 프로젝트는 WebRTC의 양방향 통신을 구현하기 위한 테스트 파일입니다.\
 해당 프로젝트의 결과물은 서로 음성만 돌리게 구현하였습니다.
 
+## 실행 방법
+
+[서버 세팅](https://github.com/Hyunjin-Jung/Lincall-backend) 에 가서 clone 후 실행을 합니다.\
+그 상태로 npm start 를 한 후에 한명이 Client 에 들어가면 alert 로 숫자가 뜹니다.\
+다른 한명은 Counselor 로 들어가서 그 숫자를 입력하면 둘이 연결되게 됩니다.
+
+## 주의 사항
+서버로 세팅한 IP 주소를 알고 있어야 서로 그 IP로 맞춰야만 돌아가게 됩니다. (localhost:8080 을 서버 ip로 바꿔야합니다.)\
+같은 로컬 환경 속에 있어야만 돌아가는 상태이고 멀리 있는 사람끼리 연결하고 싶으시면 TURN SERVER 를 구축해야 합니다.\
+TURN SERVER 는 coturn 을 사용하면 손쉽게 구축할 수 있습니다.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
