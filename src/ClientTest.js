@@ -2,7 +2,6 @@ import React, {useEffect, useState, Component, useRef} from "react";
 import axios from "axios";
 import SockJS from "sockjs-client";
 import Stomp from "webstomp-client";
-import { LocalConvenienceStoreOutlined } from "@mui/icons-material";
 
 var stun_config = {
     'iceServers': [
