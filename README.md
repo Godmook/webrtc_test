@@ -13,14 +13,24 @@
 서버로 세팅한 IP 주소를 알고 있어야 서로 그 IP로 맞춰야만 돌아가게 됩니다. (localhost:8080 을 서버 ip로 바꿔야합니다.)\
 같은 로컬 환경 속에 있어야만 돌아가는 상태이고 멀리 있는 사람끼리 연결하고 싶으시면 TURN SERVER 를 구축해야 합니다.\
 TURN SERVER 는 coturn 을 사용하면 손쉽게 구축할 수 있습니다.
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+* JS File
+
+| File Name | Description            |
+|--------|--------------------
+|ClientTest| Caller 랑 동일 인물, Offer 와 Room 생성하는 사람 
+|CounselorTest|  Callee 랑 동일 인물, Answer 하는 사람
+|First| 시작화면, onclick으로 counserlor, client 선택 가능
 
 ## Available Scripts
 
 In the project directory, you can run:
 
+### `npm install`
+
+처음에 이 프로젝트를 clone 하면 npm install 을 통해 node_modules 를 설치해야 합니다.\
+만약 node 도 안깔려있다면 [리엑트 시작하기](https://cocoon1787.tistory.com/771) 를 참고하시기 바랍니다.
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -29,57 +39,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
